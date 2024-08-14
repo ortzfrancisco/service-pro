@@ -78,6 +78,31 @@
         </form>
     </section>
 
+    <script>
+        document.getElementById('appointment-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+    
+            const name = document.getElementById('name').value;
+            const service = document.getElementById('service').value;
+            const appointmentDate = document.getElementById('date').value;
+    
+            fetch('/api/appointments', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: name,
+                    service: service,
+                    appointment_date: appointmentDate
+                })
+            })
+            .then(response => response.text())
+            .then(data => alert(data))
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+
     <!-- Testimonials Section -->
     <section id="testimonials" class="container mx-auto p-6 my-12">
         <h2 class="text-3xl font-semibold mb-6 text-center">What Our Customers Say</h2>

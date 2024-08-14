@@ -2,8 +2,9 @@
   "name": "service-pro",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx tailwindcss -i ./src/styles.css -o ./dist/styles.css --watch"
   },
@@ -12,7 +13,13 @@
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^10.4.20",
+    "cypress": "^13.13.2",
     "postcss": "^8.4.41",
     "tailwindcss": "^3.4.10"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2",
+    "mysql2": "^3.11.0"
   }
 }

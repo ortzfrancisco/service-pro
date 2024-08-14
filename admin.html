@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Appointments</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.0/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mx-auto p-6">
+        <h1 class="text-2xl font-bold mb-4">Customer Appointments</h1>
+        <ul id="appointments-list" class="list-disc list-inside">
+        </ul>
+    </div>
+
+    <script>
+        fetch('/api/appointments')
+        .then(response => response.json())
+        .then(data => {
+            const list = document.getElementById('appointments-list');
+            data.forEach(appointment => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${appointment.name} - ${appointment.service} on ${appointment.appointment_date}`;
+                list.appendChild(listItem);
+            });
+        })
+        .catch(error => console.error('Error:', error));
+    </script>
+</body>
+</html>
